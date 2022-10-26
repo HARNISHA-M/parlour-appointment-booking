@@ -1,0 +1,34 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+.navbar .navbar-nav .nav-item .nav-link,
+.navbar .navbar-nav .nav-item a{
+    color: black;
+    font-size: 20px;
+    font-weight: bold;
+    margin-left: 50px;
+    text-transform: uppercase;
+    
+}
+
+.navbar .navbar-nav .nav-item .nav-link:hover,
+.navbar .navbar-nav .nav-item .active {
+    color: #75492b;
+    text-decoration: underline;
+    text-decoration-color: #75492b;
+}
+
+
+.login{
+    text-decoration: none;
+} 
+.nav-tabs .nav-item{
+
+    border: 1px solid transparent;
+    border-top-left-radius: 0.25rem;
+    border-top-right-radius: 025rem;
+    width: 50%;
+}

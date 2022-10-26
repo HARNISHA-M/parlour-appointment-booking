@@ -1,0 +1,49 @@
+.home {
+    width: 100%;
+    height: 100vh;
+    background-color: #f7e6df;
+    border-radius: 0 0 300px 0;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.home .home-img img {
+    max-width: 100%;
+    height: 100%;
+    margin-top: 0%;
+    margin-left: -2%;
+}
+
+.home .home-content {
+    width: 40%;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+}
+
+.home-content h1 {
+    font-family: 'Great Vibes', cursive;
+    font-family: 'Nunito', sans-serif;
+    font-size: 4rem;
+    line-height: 3.5rem;
+    letter-spacing: 4px;
+    color: #75492b;
+    margin-bottom: 1.5rem;
+}
+
+.home-content p {
+    font-weight: 400;
+    line-height: 1.5rem;
+    letter-spacing: 2px;
+    color: black;
+    margin-bottom: 1.5rem;
+}
+
+

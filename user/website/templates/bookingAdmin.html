@@ -1,0 +1,60 @@
+{%extends "layoutAdmin.html"%}
+{% block content %}
+{% with messages = get_flashed_messages() %}
+{% if messages %}
+  {% for message in messages %}
+    <div class="alert alert-success alert-dismissable" role="alert">
+      <button type="button" class="close" data-dismiss="alert" aria-label="close">
+        <span aria-hidden="true">x</span>
+      </button>
+      {{message}}
+    </div>
+        
+  {% endfor %}
+{%endif %}
+{% endwith %}
+<table class="table table-striped">
+    <thead>
+      <tr>
+        <th scope="col">s.no</th>
+        <th scope="col">Name</th>
+        <th scope="col">Email</th>
+        <th scope="col">Address</th>
+        <th scope="col">phone</th>
+        <th scope="col">package</th>
+        <th scope="col">Date</th>
+        <th scope="col">Status</th>
+
+      </tr>
+    </thead>
+    <tbody>
+        {% for row in data %}
+            <tr>
+                <td>{{row.id}}</td>
+                <td>{{row.name}}</td>
+                <td>{{row.email}}</td>
+                <td>{{row.address}}</td>
+                <td>{{row.phne}}</td>
+                <td>{{row.package}}</td>
+                <td>{{row.date}}</td>
+                {% if row.status == "Pending" %}
+                  <td><form method="post" action="/acceptConcept/{{row.id}}"><a type="submit" class="btn-lg btn-success " href="/acceptConcept/{{row.id}}"> Accept </a></form></td>
+                  <td><form method="post" action="/rejectConcept/{{row.id}}"><a type="submit" class="btn-lg btn-danger" href="/rejectConcept/{{row.id}}"> reject </a></form></td>
+                {% else %}
+                  {% if row.status=="Accepted" %}
+                    <td style="color:green ;">{{row.status}}</td>
+                    <td></td>
+                  {% else %}
+                    <td style="color:red ;">{{row.status}}</td>
+                    <td></td>
+                  {% endif %}
+                {% endif %}
+               
+            </tr>
+        {% endfor %}
+    </tbody>
+  </table>
+{%endblock%}
+    
+
+   

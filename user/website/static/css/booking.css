@@ -1,0 +1,183 @@
+
+flash{
+    text-align: center;
+}
+.formbox {
+    height: 100%;
+    width: 60%;
+    font-size: larger;
+}
+#heading{
+    margin: 0 auto;
+    text-align: center;
+    font-style: italic;
+    color: #75492b;
+    font-size: 3rem;
+}
+/* .sec{
+    background-image: url(../images/final);
+    background-repeat: no-repeat;
+    background-size: cover;
+} */
+.all{
+    margin-left: 7rem;
+}
+
+label {
+    font-size: 20px;
+    font-weight: bold;
+    color: #75492b;
+}
+input,select{
+    box-shadow: 8px 8px 8px rgba(0, 0, 0, 0.15);
+}
+
+.selmenu{
+    margin-left: 1rem;
+    width: 18rem;
+    padding: 0.5rem;
+
+}
+.sec {
+    width: 100%;
+    padding: 5rem 0;
+    background-color: hsl(18, 60%, 92%);
+    border-radius: 0 200px;
+    display: flex;
+    flex-direction: column;
+}
+
+
+.formbox {
+    margin-right: 10rem;
+    height: 100%;
+    width: 50%;
+    margin-left: 35%;
+    margin-top: 3rem;
+}
+
+.bookimage {
+    margin-left: 10%;
+}
+
+label {
+    font-size: 20px;
+    font-weight: bold;
+    color: #75492b;
+}
+
+#book {
+    background-color: #75492b;
+    border-color: #75492b;
+    margin-top: 1rem;
+    color: white;
+}
+
+input {
+    box-shadow: 8px 8px 8px rgba(0, 0, 0, 0.15);
+}
+
+
+.bookimage {
+    margin-left: 10%;
+}
+
+label {
+    font-size: 10px;
+    font-weight: bold;
+    color: green;
+}
+
+#book {
+    background-color: #75492b;
+    border-color: white;
+    margin-top: 1rem;
+}
+
+input {
+    box-shadow: 8px 8px 8px rgba(0, 0, 0, 0.15);
+}
+
+
+.username,
+.password,
+.submit {
+    margin-left: 37%;
+    margin-top: 2%;
+}
+
+.password {
+    margin-top: 5%;
+}
+
+.submit {
+    margin-top: 5%;
+    margin-bottom: 3%;
+    border: 2px solid orange;
+    
+}
+
+.signup {
+    margin-left: 38%;
+    font-weight: 500;
+    font-size: 15px;
+    color: blue;
+    text-transform: uppercase;
+}
+
+input {
+    border: none;
+    width: 300px;
+    height: 40px;
+}
+
+.body {
+    height: 100%;
+    width: 100%;
+    position: fixed;
+}
+
+input:hover,
+input:focus {
+    border: 2px solid pink;
+}
+
+::placeholder {
+    /* Chrome, Firefox, Opera, Safari 10.1+ */
+    text-align: center;
+    text-transform: uppercase;
+}
+
+.head {
+    text-transform: uppercase;
+    font-weight: 500;
+    font-size: 25px;
+    color: darkgoldenrod;
+    margin-left: 45%;
+    padding-top: 10%;
+}
+
+.table{
+    text-align: center;
+    width: 100%;
+    font-weight: 400;
+    font-size: large;
+    margin-top: 3%;
+}
+
+.table th{
+    font-size: larger;
+    font-weight: 700;
+    font-style: italic;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    text-transform: capitalize;
+}
+
+.table td{
+    color: black;
+}
+
+
+.book-img{
+    margin-top: 50px;
+}

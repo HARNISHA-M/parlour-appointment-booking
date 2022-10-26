@@ -1,0 +1,66 @@
+{%extends "layoutAdmin.html"%}
+{% block content %}
+
+{% with messages = get_flashed_messages() %}
+  {% if messages %}
+    {% for message in messages %}
+      <div class="alert alert-success alert-dismissable" role="alert">
+        <button type="button" class="close" data-dismiss="alert" aria-label="close">
+          <span aria-hidden="true">x</span>
+        </button>
+        {{message}}
+      </div>
+          
+    {% endfor %}
+  {%endif %}
+{% endwith %}
+
+<h1 style="text-align: center; margin-top: 15px;"><i>GALLERY</i></h1>
+
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">upload an image</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+          <form method="post" action="{{url_for('views.galleryImage')}}"  enctype="multipart/form-data">
+              <div class="form-group">
+                <input type="file" class="form-control-file" id="exampleFormControlFile1" name="inputFile">
+              </div>
+              <button type="submit" class="btn btn-primary">Upload</button>
+          </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        
+      </div>
+    </div>
+  </div>
+</div>
+
+<section class="gallery" id="gallery">
+  <div class="gallery-content">
+      <div class="section-title">
+          
+          <div class="gallery-list-img">
+            {% for row in data %}
+              <div class="gallery-img">
+                <img src="data:;base64,{{ row.final_img }}" width="300px" height="300px">
+              </div>
+            {%endfor%}
+      </div>
+  </div>
+
+</section>
+ <!-- Button trigger modal -->
+ <button type="button" class="btn-lg btn-primary plus_icon" data-toggle="modal" data-target="#exampleModal" >
+  <i class="fa-solid fa-plus"></i> Add Image
+</button>
+	
+{%endblock%}

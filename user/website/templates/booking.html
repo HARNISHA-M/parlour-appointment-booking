@@ -1,0 +1,117 @@
+{%extends "layout.html"%}
+{% block content %}
+{% with messages = get_flashed_messages() %}
+{% if messages %}
+  {% for message in messages %}
+    <div class="alert alert-success alert-dismissable" role="alert">
+      <button type="button" class="close" data-dismiss="alert" aria-label="close">
+        <span aria-hidden="true">x</span>
+      </button>
+      {{message}}
+    </div>
+        
+  {% endfor %}
+{%endif %}
+{% endwith %}
+
+
+    <section class="sec">
+      <h1 id="heading">Booking</h1>
+      <div class="container">
+        <div class="row">
+          <div class="col-6">
+            <img class="book-img" src="../static/images/finalimg.jpg" alt="" height="500px">
+          </div>
+          <!-- <div class="col">
+            <p>I believe all women are pretty without makeup- but with the right makeup can be pretty powerful</p>
+          </div> -->
+          <div class="col-6">
+            <!-- form starts -->
+            <div class="formbox">
+              <form class="row g-3" method="post" action="{{url_for('views.bookingForm')}}">
+                  <div class="col-md-12">
+                      <label for="inputEmail4" class="form-label" style="font-size:20px;color:brown;">Name</label>
+                      <input type="text" class="form-control" name="name" required>
+                  </div>
+                  <div class="col-md-12">
+                      <label for="inputEmail4" class="form-label" style="font-size:20px;color:brown;">Email</label>
+                      <input type="email" class="form-control" name="email" required>
+                  </div>
+                  <div class="col-md-12">
+                      <label for="inputAddress" class="form-label" style="font-size:20px;color:brown;">Address</label>
+                      <input type="text" class="form-control" name="address" required>
+                  </div>
+                  <div class="col-md-12">
+                      <label for="inputAddress" class="form-label" style="font-size:20px;color:brown;">Phone No</label>
+                      <input type="tel" class="form-control" name="phne" required>
+                  </div>
+                  
+                  <div>
+                    <label for="package" style="font-size:20px;color:brown;">Choose a package:</label><br>
+                    <select class="custom-select selmenu" id="package" name="package" style="height: 50%;" required> 
+                      <option value="Bronze">Bronze</option>
+                      <option value="Silver">Silver</option>
+                      <option value="Gold">Gold</option>
+                      <option value="Platinum">Platinum</option>
+                    </select>
+                  </div>
+
+
+                  <div class="col-md-12">
+                      <label for="inputAddress2" class="form-label" style="font-size:20px;color:brown;">Date</label>
+                      <input type="date" class="form-control" id="inputDate" placeholder="dd/mm/yyyy" name="date" required>
+                  </div>
+                  
+                  <div class="col-12">
+                      <button type="submit" class="btn btn-primary" id="book" >BOOK</button>
+                  </div>
+                  
+              </form>
+            </div>
+            <!-- form ends -->
+          </div>
+          
+        </div>
+      </div>
+    
+                    
+     {% if user.is_authenticated %}
+     <table class="table">
+      <thead>
+        <tr>
+          <th scope="col">name</th>
+          <th scope="col">email</th>
+          <th scope="col">address</th>
+          <th scope="col">phone</th>
+          <th scope="col">package</th>
+          <th scope="col">Date</th>
+          <th>Status</th>
+        </tr>
+      </thead>
+      <tbody>
+          {% for row in data %}
+              <tr>
+                  <td>{{row.name}}</td>
+                  <td>{{row.email}}</td>
+                  <td>{{row.address}}</td>
+                  <td>{{row.phne}}</td>
+                  <td>{{row.package}}</td>
+                  <td>{{row.date}}</td>
+                  {% if row.status=="Accepted" %}
+                    <td style="color:green ;">{{row.status}}</td>
+                  {% elif row.status=="Pending"  %}
+                    <td style="color:blue ;">{{row.status}}</td>
+                  {% else %}
+                    <td style="color:red ;">{{row.status}}</td>
+                  {% endif %}
+                  {% if row.status!="Rejected" and row.status!="Canceled" %}}
+                    <td><form method="post" action="/cancelConcept/{{row.id}}"><a type="submit" class="btn-lg btn-danger" href="/cancelConcept/{{row.id}}"> cancel </a></form></td>
+                  {% endif %}
+              </tr>
+          {% endfor %}
+      </tbody>
+    </table>
+    {% endif %}
+  
+</section>
+{%endblock%}
