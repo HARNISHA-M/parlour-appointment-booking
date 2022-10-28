@@ -153,13 +153,21 @@ def bookingForm():
             elif(c_date<t_date):
                 flash("Enter correct date")
             else:
+                if(len(phne)!=10):
+                    flash("Enter 10 digit of phone number!")
+                    return redirect(url_for('views.booking',user=current_user))
+                else:
+                    if(phne.isdigit()==False):
+                        flash("Only numbers are allowed!")
+                        return redirect(url_for('views.booking',user=current_user))
+
                 my_data=bookingdb(name,email,address,phne,package,date,username,status)
                 db.session.add(my_data)
                 db.session.commit()
                 flash("Data send to admin...Wait for your response")
-                email="logithad.20cse@kongu.edu"
+                email="keerthij.20cse@kongu.edu"
                 subject="order received"
-                msg="Hurray!"+ my_data.name +" has order for date:"+my_data.date+" please respond to the customer!"
+                msg="Hurray! , "+ my_data.name +" has order for date:"+my_data.date+" please respond to the customer!"
                 message=Message(subject,sender="harinisham.20cse@kongu.edu",recipients=[email])
                 message.body=msg
                 mail.send(message)
@@ -227,7 +235,7 @@ def acceptConcept(id):
     flash("Order has been accepted successfully!!")
     email=my_data.email
     subject="confiramtion mail"
-    msg= my_data.name +"Your booking for MakeupArt is confirmed :)"
+    msg= my_data.name +" , Your booking for MakeupArt is confirmed :)"
     message=Message(subject,sender="harinisham.20cse@kongu.edu",recipients=[email])
     message.body=msg
     mail.send(message)
@@ -242,7 +250,7 @@ def rejectConcept(id):
     flash("Order has been rejected successfully!!")
     email=my_data.email
     subject="Rejection mail"
-    msg="Sorry,"+ my_data.name +"Your booking for MakeupArt is rejected :("
+    msg="Sorry, "+ my_data.name +"Your booking for MakeupArt is rejected :("
     message=Message(subject,sender="harinisham.20cse@kongu.edu",recipients=[email])
     message.body=msg
     mail.send(message)
@@ -255,9 +263,9 @@ def cancelConcept(id):
     my_data.status="Canceled"
     db.session.commit()
     flash("Your order has been cancelled!!")
-    email="logithad.20cse@kongu.edu"
+    email="keerthij.20cse@kongu.edu"
     subject="cancellation mail"
-    msg="Sorry,"+ my_data.name +" has cancelled the booking for MakeupArt :("
+    msg="Sorry, "+ my_data.name +" has cancelled the booking for MakeupArt :("
     message=Message(subject,sender="harinisham.20cse@kongu.edu",recipients=[email])
     message.body=msg
     mail.send(message)
